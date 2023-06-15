@@ -26,7 +26,7 @@ class CartHistoryPage extends GetView<CartHistoryController> {
       outputDate,
       style: Theme.of(context).textTheme.labelSmall!.copyWith(
           fontWeight: FontWeight.w500,
-        color: AppColors.primary.withOpacity(0.5)
+        color: Theme.of(context).primaryColor.withOpacity(0.5)
       ),
     );
   }
@@ -123,13 +123,13 @@ class CartHistoryPage extends GetView<CartHistoryController> {
                                       padding: EdgeInsets.symmetric(horizontal: 5.w, vertical: 10.h),
                                       decoration: BoxDecoration(
                                         borderRadius: BorderRadius.circular(10.r),
-                                        border: Border.all(width: 1, color: AppColors.primary.withOpacity(0.5)),
+                                        border: Border.all(width: 1, color: Theme.of(context).primaryColor.withOpacity(0.5)),
                                       ),
                                       child: Text(
                                         "Re-Order",
                                         style: Theme.of(context).textTheme.labelSmall!.copyWith(
                                             fontWeight: FontWeight.w500,
-                                            color: AppColors.primary.withOpacity(0.5)
+                                            color: Theme.of(context).primaryColor.withOpacity(0.5)
                                         ),
                                       ),
                                     )

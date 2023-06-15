@@ -32,7 +32,7 @@ class CartPage extends GetView<CartController> {
                         child: TopAppIcon(
                             icon: Icons.arrow_back_ios,
                             iconColor: Colors.white,
-                            backgroundColor: AppColors.primary,
+                            backgroundColor: Theme.of(context).primaryColor,
                             iconSize: 24.w
                         )),
                     SizedBox(width: 20.w*5,),
@@ -111,7 +111,7 @@ class CartPage extends GetView<CartController> {
                                           children: [
                                             GestureDetector(
                                                 onTap: (){
-                                                  controller.addItem(cartList[index].product!, -1);
+                                                  controller.addItem(context, cartList[index].product!, -1);
 
                                                 },
                                                 child: const Icon(Icons.remove, color: AppColors.signColor)),
@@ -123,7 +123,7 @@ class CartPage extends GetView<CartController> {
                                             SizedBox(width:5.h),
                                             GestureDetector(
                                                 onTap: (){
-                                                  controller.addItem(cartList[index].product!, 1);
+                                                  controller.addItem(context, cartList[index].product!, 1);
 
                                                 },
                                                 child: const Icon(Icons.add, color: AppColors.signColor))
@@ -177,7 +177,7 @@ class CartPage extends GetView<CartController> {
               child: Container(
                   padding: EdgeInsets.only(top: 15.h, bottom: 15.h, left: 20.h, right: 20.h),
                   decoration: BoxDecoration(
-                    color: AppColors.primary,
+                    color: Theme.of(context).primaryColor,
                     borderRadius: BorderRadius.circular(20.r),
                   ),
                   child: Text(

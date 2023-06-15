@@ -23,7 +23,7 @@ class AppColumn extends StatelessWidget {
         Row(
             children: [
               Wrap(
-                  children: List.generate(5, (index) => Icon(Icons.star, color: AppColors.primary, size: 14.w))
+                  children: List.generate(5, (index) => Icon(Icons.star, color: Theme.of(context).primaryColor, size: 14.w))
               ),
               SizedBox(width: 5.w),
               Text(
@@ -47,7 +47,7 @@ class AppColumn extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               buildIconAndTextWidget(context: context ,icon: Icons.circle_sharp, text: "Normal", iconColor: AppColors.iconColor1),
-              buildIconAndTextWidget(context: context ,icon: Icons.location_on, text: "1.7km", iconColor: AppColors.primary),
+              buildIconAndTextWidget(context: context ,icon: Icons.location_on, text: "1.7km", iconColor: Theme.of(context).primaryColor),
               buildIconAndTextWidget(context: context ,icon: Icons.access_time_rounded, text: "32min", iconColor: AppColors.accent),
             ]
         )

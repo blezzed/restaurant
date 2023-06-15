@@ -18,7 +18,7 @@ class BottomNav extends GetView<HomeController> {
       margin: EdgeInsets.all(5.w),
       height: 60.h,
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: Theme.of(context).cardColor,
         boxShadow: [
           BoxShadow(
             color: Colors.black.withOpacity(.1),
@@ -56,7 +56,7 @@ class BottomNav extends GetView<HomeController> {
                   width: index == controller.state.page.value ? 115.w : 0.w,
                   decoration: BoxDecoration(
                     color: index == controller.state.page.value
-                        ? AppColors.primary.withOpacity(.2)
+                        ? Theme.of(context).primaryColor.withOpacity(.2)
                         : Colors.transparent,
                     borderRadius: BorderRadius.circular(10.r),
                   ),
@@ -87,8 +87,8 @@ class BottomNav extends GetView<HomeController> {
                             index == controller.state.page.value
                                 ? controller.state.tabTitles[index]
                                 : '',
-                            style: const TextStyle(
-                              color: AppColors.primary,
+                            style: TextStyle(
+                              color: Theme.of(context).primaryColor,
                               fontWeight: FontWeight.w600,
                               fontSize: 15,
                             ),
@@ -108,7 +108,7 @@ class BottomNav extends GetView<HomeController> {
                           listOfIcons[index],
                           size: 25.w,
                           color: index == controller.state.page.value
-                              ? AppColors.primary
+                              ? Theme.of(context).primaryColor
                               : Colors.black26,
                         ),
                       ],

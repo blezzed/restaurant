@@ -26,7 +26,7 @@ class SalesPage extends GetView<SalesController> {
                           style: Theme.of(context).textTheme.labelMedium!.copyWith(
                             fontSize: 14.sp,
                             fontWeight: FontWeight.w500,
-                            color: AppColors.primary
+                            color: Theme.of(context).primaryColor
                           ),
                         ),
                         Row(
@@ -57,7 +57,7 @@ class SalesPage extends GetView<SalesController> {
                           height: 45.h,
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(10.w),
-                            color: AppColors.primary,
+                            color: Theme.of(context).primaryColor,
                           ),
                           child: Icon(Icons.search, color: Colors.white, size: 24.w,)
                       ),

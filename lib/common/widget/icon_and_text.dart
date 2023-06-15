@@ -9,7 +9,7 @@ Widget buildIconAndTextWidget({
   context,
   required IconData icon,
   required String text,
-  Color iconColor = AppColors.primary,
+  Color? iconColor,
   String? route,
   //QueryDocumentSnapshot<ProductItem>? item
 }){
@@ -23,7 +23,7 @@ Widget buildIconAndTextWidget({
               });
             }*/
           },
-          child: Icon(icon, color: iconColor, size: 24.h,),
+          child: Icon(icon, color: iconColor??Theme.of(context).primaryColor, size: 24.h,),
         ),
         SizedBox(width: 5.w,),
         Text(

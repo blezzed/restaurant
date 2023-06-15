@@ -3,6 +3,7 @@ import 'package:restaurant/pages/cart/index.dart';
 import 'package:restaurant/pages/cart_history/index.dart';
 import 'package:restaurant/pages/home/index.dart';
 import 'package:restaurant/pages/home/product_details/index.dart';
+import 'package:restaurant/pages/home/reserve/index.dart';
 
 import 'routes.dart';
 
@@ -30,6 +31,12 @@ class AppPages{
       name: AppRoutes.ProductDetails,
       page: () => const ProductDetailsPage(),
       binding: ProductDetailsBinding(),
+    ),
+
+    GetPage(
+      name: AppRoutes.Reserve,
+      page: () => const ReservePage(),
+      binding: ReserveBinding(),
     ),
 
     GetPage(

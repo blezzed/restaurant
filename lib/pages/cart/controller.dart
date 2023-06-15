@@ -13,7 +13,7 @@ class CartController extends GetxController{
   final user_id = UserStore.to.profile.id;
 
 
-  void addItem(ProductModel product, int quantity){
+  void addItem(context, ProductModel product, int quantity){
     var totalQuantity=0;
     if(state.items.containsKey(product.id!)){
       state.items.update(product.id!, (value) {
@@ -48,7 +48,7 @@ class CartController extends GetxController{
         ));
       }else{
         Get.snackbar("Item count", "You should atleast add an item in the cart !",
-          backgroundColor: AppColors.primary,
+          backgroundColor: Theme.of(context).primaryColor,
           colorText: Colors.white,
         );
       }

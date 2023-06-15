@@ -33,7 +33,7 @@ class _ExpandableTextWidgetState extends State<ExpandableTextWidget> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: secondHalf.isEmpty? Text(firstHalf, style: Theme.of(context).textTheme.labelSmall!.copyWith(fontSize: 16.sp, color: AppColors.paraColor),): Column(
+      child: secondHalf.isEmpty? Text(firstHalf, style: Theme.of(context).textTheme.labelSmall!.copyWith(fontSize: 14.sp, color: AppColors.paraColor),): Column(
         children: [
           Text(
               hiddenText?(firstHalf+"...") : ("$firstHalf $secondHalf"),
@@ -53,12 +53,12 @@ class _ExpandableTextWidgetState extends State<ExpandableTextWidget> {
               children: [
                 hiddenText?Text(
                   "Show more",
-                  style: Theme.of(context).textTheme.labelSmall!.copyWith(color: AppColors.primary),
+                  style: Theme.of(context).textTheme.labelSmall!.copyWith(color: Theme.of(context).primaryColor),
                 ):Text(
                   "Show less",
-                  style: Theme.of(context).textTheme.labelSmall!.copyWith(color: AppColors.primary),
+                  style: Theme.of(context).textTheme.labelSmall!.copyWith(color: Theme.of(context).primaryColor),
                 ),
-                Icon(hiddenText? Icons.arrow_drop_down: Icons.arrow_drop_up, color: AppColors.primary)
+                Icon(hiddenText? Icons.arrow_drop_down: Icons.arrow_drop_up, color: Theme.of(context).primaryColor)
               ],
             )
           )

@@ -8,6 +8,8 @@ class AppRoutes{
 
   static const String ProductDetails = "/productdetails";
 
+  static const String Reserve = "/reserve";
+
   static const String Cart = "/cart";
 
   static const String MainMap = "/mainmap";

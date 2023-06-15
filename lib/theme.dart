@@ -62,7 +62,6 @@ class AppTheme {
           height: 1.2
       ),
     ),
-
   );
 
   /// Dark theme and its settings.

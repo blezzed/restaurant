@@ -7,10 +7,11 @@ import 'package:restaurant/common/store/store.dart';
 import 'package:restaurant/common/widget/widget.dart';
 import 'package:restaurant/pages/cart/index.dart';
 import 'package:restaurant/pages/home/product_details/index.dart';
+import 'package:restaurant/pages/home/reserve/index.dart';
 
-class ProductDetailsController extends GetxController{
-  ProductDetailsController();
-  final state = ProductDetailsState();
+class ReserveController extends GetxController{
+  ReserveController();
+  final state = ReserveState();
   final user_id = UserStore.to.profile.id;
   String? doc_uid;
   String? page;

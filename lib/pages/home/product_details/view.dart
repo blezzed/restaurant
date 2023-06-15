@@ -13,7 +13,7 @@ import '../../../common/values/values.dart';
 class ProductDetailsPage extends GetView<ProductDetailsController> {
   const ProductDetailsPage({Key? key}) : super(key: key);
 
-  /*Widget _buildIconAndTextWidget({context, required String icon, required String text, Color iconColor = AppColors.primary, String? route}){
+  /*Widget _buildIconAndTextWidget({context, required String icon, required String text, Color iconColor = Theme.of(context).primaryColor, String? route}){
     return Row(
         children: [
           GestureDetector(
@@ -105,7 +105,7 @@ class ProductDetailsPage extends GetView<ProductDetailsController> {
                               icon: Icons.circle,
                               size:20.w,
                               iconColor: Colors.transparent,
-                              backgroundColor: AppColors.primary,
+                              backgroundColor: Theme.of(context).primaryColor,
                             ),
                           ):Container(),
                           controller.totalItems>=1?
@@ -211,7 +211,7 @@ class ProductDetailsPage extends GetView<ProductDetailsController> {
                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 children: [
                                   buildIconAndTextWidget(context: context ,icon: Icons.circle_sharp, text: "Normal", iconColor: AppColors.iconColor1),
-                                  buildIconAndTextWidget(context: context ,icon: Icons.location_on, text: "1.7km", iconColor: AppColors.primary),
+                                  buildIconAndTextWidget(context: context ,icon: Icons.location_on, text: "1.7km", iconColor: Theme.of(context).primaryColor),
                                   buildIconAndTextWidget(context: context ,icon: Icons.access_time_rounded, text: "32min", iconColor: AppColors.accent),
                                 ],
                               ),
@@ -288,12 +288,12 @@ class ProductDetailsPage extends GetView<ProductDetailsController> {
             ),
             GestureDetector(
               onTap: (){
-                controller.addItem(controller.state.product.value!);
+                controller.addItem(context, controller.state.product.value!);
               },
               child: Container(
                   padding: EdgeInsets.only(top: 15.h, bottom: 15.h, left: 20.h, right: 20.h),
                   decoration: BoxDecoration(
-                    color: AppColors.primary,
+                    color: Theme.of(context).primaryColor,
                     borderRadius: BorderRadius.circular(20.r),
                   ),
                   child: Text(
