@@ -17,4 +17,10 @@ class AppRoutes{
   static const String Address = "/address";
 
   static const String CartHistory = "/cart_history";
+
+  static const String PersonalInformation = "/personal_information";
+
+  static const String MenuList = "/menu_list";
+
+  static const String ReserveTable = "/reserve_table";
 }

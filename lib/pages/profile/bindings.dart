@@ -5,12 +5,9 @@ import 'package:restaurant/pages/home/index.dart';
 import 'package:restaurant/pages/home/sales/index.dart';
 import 'package:restaurant/pages/profile/index.dart';
 
-class HomeBinding implements Bindings{
+class ProfileBinding implements Bindings{
   @override
   void dependencies() {
-    Get.lazyPut<HomeController>(() => HomeController());
-    Get.lazyPut<SalesController>(() => SalesController());
-    Get.lazyPut<CartHistoryController>(() => CartHistoryController());
     Get.lazyPut<ProfileController>(() => ProfileController());
   }
 

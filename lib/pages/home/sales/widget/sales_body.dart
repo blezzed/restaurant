@@ -7,7 +7,6 @@ import 'package:get/get.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 import 'package:restaurant/common/entities/entities.dart';
 import 'package:restaurant/common/values/storage.dart';
-import 'package:restaurant/common/widget/widget.dart';
 import 'package:restaurant/pages/home/sales/index.dart';
 import 'package:restaurant/theme.dart';
 
@@ -131,7 +130,7 @@ class _SalesBodyState extends State<SalesBody> {
                         width: 120.w,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(10.r),
-                          image: DecorationImage(
+                          image: const DecorationImage(
                             fit: BoxFit.cover,
                             image: AssetImage(
                                 "assets/images/Burgers.jpg",
@@ -143,11 +142,14 @@ class _SalesBodyState extends State<SalesBody> {
                   ),
                   SizedBox(height: 20.h,),
                   FilledButton.tonal(
-                      onPressed: (){},
+                      onPressed: (){
+                        Get.toNamed("/reserve_table");
+                      },
                       child: Text(
                           'Reserve a table',
                         style: Theme.of(context).textTheme.labelMedium,
-                      )),
+                      )
+                  ),
                 ],
               ),
             ),

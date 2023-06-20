@@ -1,12 +1,10 @@
 
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:get/get.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:restaurant/common/widget/widget.dart';
-import 'package:restaurant/pages/home/product_details/index.dart';
-import 'package:restaurant/pages/home/reserve/index.dart';
+import 'package:restaurant/pages/home/food_details/index.dart';
 import 'package:restaurant/theme.dart';
 
 import '../../../common/values/values.dart';
