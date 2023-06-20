@@ -171,7 +171,7 @@
     },
     {
       "name": "flutter_screenutil",
-      "rootUri": "file:///C:/Users/Administrator/AppData/Local/Pub/Cache/hosted/pub.dev/flutter_screenutil-5.8.2",
+      "rootUri": "file:///C:/Users/Administrator/AppData/Local/Pub/Cache/hosted/pub.dev/flutter_screenutil-5.8.4",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -237,7 +237,7 @@
     },
     {
       "name": "lints",
-      "rootUri": "file:///C:/Users/Administrator/AppData/Local/Pub/Cache/hosted/pub.dev/lints-2.1.0",
+      "rootUri": "file:///C:/Users/Administrator/AppData/Local/Pub/Cache/hosted/pub.dev/lints-2.1.1",
       "packageUri": "lib/",
       "languageVersion": "3.0"
     },
@@ -267,7 +267,7 @@
     },
     {
       "name": "package_info_plus",
-      "rootUri": "file:///C:/Users/Administrator/AppData/Local/Pub/Cache/hosted/pub.dev/package_info_plus-4.0.1",
+      "rootUri": "file:///C:/Users/Administrator/AppData/Local/Pub/Cache/hosted/pub.dev/package_info_plus-4.0.2",
       "packageUri": "lib/",
       "languageVersion": "2.18"
     },
@@ -315,9 +315,9 @@
     },
     {
       "name": "path_provider_windows",
-      "rootUri": "file:///C:/Users/Administrator/AppData/Local/Pub/Cache/hosted/pub.dev/path_provider_windows-2.1.6",
+      "rootUri": "file:///C:/Users/Administrator/AppData/Local/Pub/Cache/hosted/pub.dev/path_provider_windows-2.1.7",
       "packageUri": "lib/",
-      "languageVersion": "2.17"
+      "languageVersion": "2.18"
     },
     {
       "name": "pedantic",
@@ -357,9 +357,9 @@
     },
     {
       "name": "shared_preferences",
-      "rootUri": "file:///C:/Users/Administrator/AppData/Local/Pub/Cache/hosted/pub.dev/shared_preferences-2.1.1",
+      "rootUri": "file:///C:/Users/Administrator/AppData/Local/Pub/Cache/hosted/pub.dev/shared_preferences-2.1.2",
       "packageUri": "lib/",
-      "languageVersion": "2.17"
+      "languageVersion": "2.18"
     },
     {
       "name": "shared_preferences_android",
@@ -417,7 +417,7 @@
     },
     {
       "name": "sqflite_common",
-      "rootUri": "file:///C:/Users/Administrator/AppData/Local/Pub/Cache/hosted/pub.dev/sqflite_common-2.4.5",
+      "rootUri": "file:///C:/Users/Administrator/AppData/Local/Pub/Cache/hosted/pub.dev/sqflite_common-2.4.5+1",
       "packageUri": "lib/",
       "languageVersion": "2.18"
     },
@@ -477,9 +477,9 @@
     },
     {
       "name": "win32",
-      "rootUri": "file:///C:/Users/Administrator/AppData/Local/Pub/Cache/hosted/pub.dev/win32-4.1.4",
+      "rootUri": "file:///C:/Users/Administrator/AppData/Local/Pub/Cache/hosted/pub.dev/win32-5.0.3",
       "packageUri": "lib/",
-      "languageVersion": "2.17"
+      "languageVersion": "3.0"
     },
     {
       "name": "xdg_directories",
@@ -494,7 +494,7 @@
       "languageVersion": "2.19"
     }
   ],
-  "generated": "2023-06-13T13:36:56.925008Z",
+  "generated": "2023-06-16T12:06:54.062027Z",
   "generator": "pub",
-  "generatorVersion": "3.0.0"
+  "generatorVersion": "3.0.5"
 }

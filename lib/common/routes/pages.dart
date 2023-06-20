@@ -1,9 +1,12 @@
 import 'package:get/get.dart';
+import 'package:restaurant/pages/Menu_list/index.dart';
 import 'package:restaurant/pages/cart/index.dart';
 import 'package:restaurant/pages/cart_history/index.dart';
+import 'package:restaurant/pages/home/food_details/index.dart';
 import 'package:restaurant/pages/home/index.dart';
+import 'package:restaurant/pages/home/personal_inforation/index.dart';
 import 'package:restaurant/pages/home/product_details/index.dart';
-import 'package:restaurant/pages/home/reserve/index.dart';
+import 'package:restaurant/pages/home/reserve_table/index.dart';
 
 import 'routes.dart';
 
@@ -40,6 +43,12 @@ class AppPages{
     ),
 
     GetPage(
+      name: AppRoutes.ReserveTable,
+      page: () => const ReserveTablePage(),
+      binding: ReserveTableBinding(),
+    ),
+
+    GetPage(
       name: AppRoutes.Cart,
       page: () => const CartPage(),
       binding: CartBinding(),
@@ -49,6 +58,18 @@ class AppPages{
       name: AppRoutes.CartHistory,
       page: () => const CartHistoryPage(),
       binding: CartHistoryBinding(),
+    ),
+
+    GetPage(
+      name: AppRoutes.PersonalInformation,
+      page: () => const PersonalInformationPage(),
+      binding: PersonalInformationBinding(),
+    ),
+
+    GetPage(
+      name: AppRoutes.MenuList,
+      page: () => const MenuListPage(),
+      binding: MenuListBinding(),
     ),
 
     /*GetPage(

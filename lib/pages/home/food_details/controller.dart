@@ -1,13 +1,11 @@
 import 'dart:convert';
 
-import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:restaurant/common/entities/entities.dart';
 import 'package:restaurant/common/store/store.dart';
 import 'package:restaurant/common/widget/widget.dart';
 import 'package:restaurant/pages/cart/index.dart';
-import 'package:restaurant/pages/home/product_details/index.dart';
-import 'package:restaurant/pages/home/reserve/index.dart';
+import 'package:restaurant/pages/home/food_details/index.dart';
 
 class ReserveController extends GetxController{
   ReserveController();
