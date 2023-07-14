@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:restaurant/common/store/store.dart';
 import 'package:restaurant/pages/home/index.dart';
-import 'package:rxdart/rxdart.dart';
 
 class HomeController extends GetxController{
   HomeController();

@@ -42,11 +42,11 @@ dependencies:
   dio: ^4.0.4
   dio_cookie_manager: ^2.0.0
   cookie_jar: ^3.0.1
+  flutter_dotenv: ^5.1.0
+  web_socket_channel: ^2.4.0
 
   # local storage
   shared_preferences: ^2.0.13
-  cached_network_image: ^3.2.0
-  flutter_cache_manager: ^3.3.0
 
   flutter_rating_bar: ^4.0.1
   get: ^4.6.5
@@ -89,6 +89,7 @@ flutter:
   assets:
     - assets/icons/
     - assets/images/
+    - .env
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

@@ -4,19 +4,89 @@ import 'dart:io';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:get/get.dart';
+import 'package:http/http.dart' as http;
 import 'package:google_sign_in/google_sign_in.dart';
 //import 'package:image_picker/image_picker.dart';
 import 'package:path/path.dart' show extension;
 import 'package:firebase_auth/firebase_auth.dart' as firebase;
+import 'package:restaurant/common/apis/apis.dart';
+import 'package:restaurant/common/entities/entities.dart';
 import 'package:restaurant/common/store/store.dart';
+import 'package:restaurant/common/widget/custom_snack_bar.dart';
 import 'package:restaurant/pages/sign_in/index.dart';
 
 class SignInController extends GetxController{
   SignInController();
   final state = SignInState();
-  //final emailController = TextEditingController();
-  //final passwordController = TextEditingController();
+  String? page_to;
+  final emailController = TextEditingController();
+  final nameController = TextEditingController();
+  final surnameController = TextEditingController();
+  final phoneController = TextEditingController();
+  final passwordController = TextEditingController();
+
+  static final _baseUrl = dotenv.get('SERVER_HOST', fallback: 'http://10.0.2.2:8080');
+
+  final http.Client _client = http.Client();
+
+  final uri = Uri.parse('$_baseUrl/auth/login');
+
+  Future postData() async {
+    var content = {
+      'email': emailController.text,
+      'password': passwordController.text,
+    };
+
+    final response = await _client.post(
+      uri,
+      body: jsonEncode(content)
+    );
+    print(response.body);
+
+  }
+  
+  signUpUser(){
+    // TODO the user all ready exist
+    UserData _user = UserData();
+    _user.name = nameController.text;
+    _user.surname = surnameController.text;
+    _user.email = emailController.text;
+    _user.phone = phoneController.text != '' ? phoneController.text: null;
+    UserApi.to.getSignedUpUser(_user, passwordController.text).then((value) {
+      if (value.statusCode == 500){
+        showCustomSnackBar("The user with ${emailController.text} already exist.");
+      } else if (value.statusCode == 201 ){
+        var content = UserData.fromJson(value.body);
+        print(content.name);
+        UserStore.to.saveProfile(content);
+        Get.offNamed(page_to!);
+        print("the user is signed in");
+      }
+    });
+  }
+
+  loginUser(){
+    UserApi.to.getLoggedInUser(emailController.text, passwordController.text).then((value) {
+      if (value.statusCode ==403){
+        var error = value.body;
+        showCustomSnackBar(error["message"]);
+      }else if(value.statusCode == 404){
+        var error = value.body;
+        showCustomSnackBar(error["message"]);
+      }else if(value.statusCode == 500){
+        var error = value.body;
+        showCustomSnackBar(error["message"]);
+      }else if(value.statusCode == 200){
+        var content = UserData.fromJson(value.body);
+        UserStore.to.saveProfile(content);
+        Get.offNamed(page_to!);
+        print("the user is logged in");
+      }
+
+    });
+  }
 
 
   /*final db = FirebaseFirestore.instance;
@@ -207,4 +277,20 @@ class SignInController extends GetxController{
     EasyLoading.dismiss();
   }*/
 
+  @override
+  void clear() {
+    nameController.clear();
+    surnameController.clear();
+    emailController.clear();
+    phoneController.clear();
+    passwordController.clear();
+  }
+
+  @override
+  void onInit() {
+    super.onInit();
+    var data = Get.arguments;
+    page_to = data["to"];
+
+  }
 }

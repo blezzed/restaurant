@@ -75,7 +75,7 @@ class CartPage extends GetView<CartController> {
                                       image: DecorationImage(
                                           fit: BoxFit.cover,
                                           image: NetworkImage(
-                                              BASE_URL+UPLOADS+cartList[index].img!
+                                              BASE_URL+UPLOADS+cartList[index].product!.img!
                                           )
                                       )
                                   ),
@@ -88,7 +88,7 @@ class CartPage extends GetView<CartController> {
                                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                   children: [
                                     Text(
-                                      cartList[index].name!,
+                                      cartList[index].product!.name!,
                                       style: Theme.of(context).textTheme.labelLarge!.copyWith(
                                         overflow: TextOverflow.ellipsis
                                       ),
@@ -101,7 +101,7 @@ class CartPage extends GetView<CartController> {
                                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                       children: [
                                         Text(
-                                          "\$${cartList[index].price!.toStringAsFixed(2)}",
+                                          "\$${cartList[index].product!.price!.toStringAsFixed(2)}",
                                           style: Theme.of(context).textTheme.labelMedium!.copyWith(
                                               color: Colors.red,
                                               fontSize: 16.sp

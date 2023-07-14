@@ -53,7 +53,6 @@ class UserStore extends GetxController{
     _isLogin.value = true;
     StorageService.to.setString(STORAGE_USER_PROFILE_KEY, jsonEncode(profile));
     _profile(profile);
-    setToken(profile.access_token!);
   }
 
   Future<void> saveToCartList(List<CartModel> cartList) async {
@@ -64,9 +63,9 @@ class UserStore extends GetxController{
     for (var e in cartList) {
       e.time = time;
       var item = {
-        "name": "${e.name}",
-        "quantity": e.quantity,
-        "price": '${e.price}',
+        "name": "${e.product!.name}",
+        "quantity": e.quantity!.value,
+        "price": '${e.product!.price}',
         "currency": "USD"
       };
       items.add(item);
@@ -137,7 +136,11 @@ class UserStore extends GetxController{
     await StorageService.to.remove(STORAGE_USER_CART_HISTORY_LIST_KEY);
     _isLogin.value = false;
     token = "";
-    Get.offAllNamed(AppRoutes.Sign_In);
+    Get.offAllNamed("/signIn",
+        arguments: {
+          "to": "/home"
+        }
+    );
   }
 
 }

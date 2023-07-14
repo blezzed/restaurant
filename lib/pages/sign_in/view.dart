@@ -210,6 +210,7 @@ class SignInPage extends GetView<SignInController> {
                               recognizer: TapGestureRecognizer()
                                 ..onTap = () {
                                   controller.state.signup.value = false;
+                                  controller.clear();
                                 }
                             )
                           ),
@@ -220,37 +221,50 @@ class SignInPage extends GetView<SignInController> {
                       _buildTextField(
                         context: context,
                         hintText: "Name",
+                        controller: controller.nameController,
                         keyboardType: TextInputType.text,
                       ),
                       SizedBox(height: 20.h,),
                       _buildTextField(
                         context: context,
                         hintText: "Surname",
+                        controller: controller.surnameController,
                         keyboardType: TextInputType.text,
                       ),
                       SizedBox(height: 20.h,),
                       _buildTextField(
                         context: context,
                         hintText: "Email",
+                        controller: controller.emailController,
                         keyboardType: TextInputType.emailAddress,
                       ),
                       SizedBox(height: 20.h,),
                       _buildTextField(
                         context: context,
                         hintText: "phone",
+                        controller: controller.phoneController,
                         keyboardType: TextInputType.phone,
                       ),
                       SizedBox(height: 20.h,),
                       _buildTextField(
                           context: context,
                           hintText: "Password",
+                          controller: controller.passwordController,
                           keyboardType: TextInputType.visiblePassword,
                           obscureText: true
                       ),
                       SizedBox(height: 20.h,),
                       _buildSignUpBtn(
-                          context: context,
-                          text: "SignUp"
+                        context: context,
+                        text: "SignUp",
+                        onTap: (){
+                          if (controller.emailController.text != "" && controller.passwordController.text != ""){
+                            //TODO implement the auth
+                            //controller.signUpUser();
+                            Get.offNamed(controller.page_to!);
+                          }
+                            //Get.offNamed(controller.page_to!);
+                        }
                       ),
                     ],
                   ),
@@ -270,6 +284,7 @@ class SignInPage extends GetView<SignInController> {
                                   recognizer: TapGestureRecognizer()
                                     ..onTap = () {
                                       controller.state.signup.value = true;
+                                      controller.clear();
                                     }
                               )),
                           Icon(Icons.arrow_forward_ios_rounded, color: Theme.of(context).primaryColor,)
@@ -279,19 +294,29 @@ class SignInPage extends GetView<SignInController> {
                       _buildTextField(
                         context: context,
                         hintText: "Email",
+                        controller: controller.emailController,
                         keyboardType: TextInputType.emailAddress,
                       ),
                       SizedBox(height: 20.h,),
                       _buildTextField(
                           context: context,
                           hintText: "Password",
+                          controller: controller.passwordController,
                           keyboardType: TextInputType.visiblePassword,
                           obscureText: true
                       ),
                       SizedBox(height: 20.h,),
                       _buildSignUpBtn(
                           context: context,
-                          text: "Login"
+                          text: "Login",
+                        onTap: (){
+                          if (controller.emailController.text != "" && controller.passwordController.text != ""){
+                            //TODO implement the auth
+                            //controller.loginUser();
+                            Get.offNamed(controller.page_to!);
+                          }
+
+                        }
                       ),
                       SizedBox(height: 20.h,),
                       _buildOrWidget(),

@@ -28,6 +28,9 @@ class CartHistoryController extends GetxController{
 
   List<CartModel> getCartHistoryData(){
     setCartHistory = UserStore.to.getCartHistoryList().reversed.toList();
+    state.getItems.value = state.items.values.map((e) {
+      return e;
+    }).toList();
     return state.storageItem;
   }
 
@@ -37,6 +40,8 @@ class CartHistoryController extends GetxController{
       state.items.putIfAbsent(state.storageItem[i].time!, () => state.storageItem[i]);
     }
   }
+
+
 
   asyncLoadAllData() async {
     getCartHistoryData();
@@ -54,10 +59,6 @@ class CartHistoryController extends GetxController{
         state.cartItemsPerOrder.putIfAbsent(state.storageItem[i].time!, () => 1);
       }
     }
-  }
-
-  onDismissed(){
-    print("i have been clicked");
   }
 
   clearAllHistory(){

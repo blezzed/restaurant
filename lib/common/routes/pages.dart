@@ -8,6 +8,7 @@ import 'package:restaurant/pages/home/personal_inforation/index.dart';
 import 'package:restaurant/pages/home/product_details/index.dart';
 import 'package:restaurant/pages/home/reserve_table/index.dart';
 import 'package:restaurant/pages/profile/index.dart';
+import 'package:restaurant/pages/receipts/index.dart';
 import 'package:restaurant/pages/sign_in/index.dart';
 
 import 'routes.dart';
@@ -30,6 +31,12 @@ class AppPages{
       /*middlewares: [
         RouteAuthMiddleware(priority: 1),
       ],*/
+    ),
+
+    GetPage(
+      name: AppRoutes.Receipts,
+      page: () => const ReceiptsPage(),
+      binding: ReceiptsBinding(),
     ),
 
     GetPage(

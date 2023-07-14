@@ -1,14 +1,13 @@
 
-class LocationModel{
+class Location{
   late int? _id;
-  late String _addressType;
   late String? _street;
   late String? _country;
   late String _address;
   late String _latitude;
   late String _longitude;
 
-  LocationModel({
+  Location({
     id,
     required addressType,
     street,
@@ -18,7 +17,6 @@ class LocationModel{
     longitude,
   }){
     _id = id;
-    _addressType = addressType;
     _street = street;
     _country = country;
     _latitude = latitude;
@@ -27,15 +25,13 @@ class LocationModel{
   }
   int? get id=>_id;
   String get address=>_address;
-  String get addressType=>_addressType;
   String? get street=>_street;
   String? get country=>_country;
   String get latitude => _latitude;
   String get longitude => _longitude;
 
-  LocationModel.fromJson(Map<String, dynamic> json){
+  Location.fromJson(Map<String, dynamic> json){
     _id = json["id"];
-    _addressType = json["addressType"];
     _address = json["address"];
     _street = json["street"];
     _country = json["country"];
@@ -46,7 +42,6 @@ class LocationModel{
   Map<String, dynamic> toJson(){
     return {
       "id":id,
-      "addressType":_addressType,
       "address":_address,
       "street":_street,
       "country":_country,
@@ -55,12 +50,12 @@ class LocationModel{
     };
   }
 
-  /*factory LocationModel.fromFirestore(
+  /*factory Location.fromFirestore(
       DocumentSnapshot<Map<String, dynamic>> snapshot,
       SnapshotOptions? options,
       ) {
     final data = snapshot.data();
-    return LocationModel(
+    return Location(
       id : data?["id"],
       addressType :data?["addressType"],
       address :data?["address"],

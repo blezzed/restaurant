@@ -2,6 +2,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:restaurant/common/apis/apis.dart';
+import 'package:restaurant/common/entities/entities.dart';
 import 'package:restaurant/common/values/storage.dart';
 
 //var logger = log.Logger();
@@ -97,6 +98,14 @@ class UserApi extends ChangeNotifier{
     final docSnap = await ref.doc(userId).get();
     return docSnap.data();
   }*/
+
+  Future<Response> getLoggedInUser(String email, String password) async {
+    return await ApiClient.to.loginDB(LOGGED_IN_USER, email: email, password: password);
+  }
+
+  Future<Response> getSignedUpUser(UserData userData, String password) async {
+    return await ApiClient.to.signupDB(SIGN_IN_USER, userData: userData, password: password);
+  }
 
   Future<Response> getFoodProductsList() async{
     return await ApiClient.to.getData(FOOD_PRODUCT_URL);

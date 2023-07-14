@@ -147,7 +147,7 @@ class ProfilePage extends GetView<ProfileController> {
                 buildListTile(context: context, title: "Notification", icon: Icons.notification_add_rounded,),
                 buildListTile(context: context, title: "About", icon: Icons.question_mark_rounded,),
                 buildListTile(context: context, title: "Logout", icon: Icons.logout, onTap: (){
-                  Get.toNamed("/signIn");
+                  controller.logout();
                 }),
               ],
             ),

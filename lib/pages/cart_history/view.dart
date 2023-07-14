@@ -59,7 +59,20 @@ class CartHistoryPage extends GetView<CartHistoryController> {
                     onTap: (){
                       controller.clearAllHistory();
                     },
-                      child: const TopAppIcon(icon: Icons.clear_all_outlined, iconColor: Colors.white, backgroundColor: Colors.red,))
+                      child: Container(
+                        width: 40.w,
+                        height: 40.w,
+                        padding: EdgeInsets.all(5.w),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(20.w),
+                          color: Colors.red[400] ,
+                        ),
+                        child: Image.asset(
+                          "assets/icons/broom.png",
+                          fit: BoxFit.cover,
+                          color: Colors.white,
+                        ),
+                      ))
                 ],
               )
           ),
@@ -80,88 +93,63 @@ class CartHistoryPage extends GetView<CartHistoryController> {
 
                     var items = cartList[index];
                     RxList generateList = controller.cartItemsPerOrderToList.toList().obs;
-                    return Slidable(
-                      endActionPane:  ActionPane(
-                        motion: const StretchMotion(),
+                    return Container(
+                      //height: 120.h,
+                      margin: EdgeInsets.only(bottom: 10.h),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          CustomSlidableAction(
-                          backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-                              onPressed: (context) => controller.onDismissed(),
-                            child: Container(
-                              width: 50.w,
-                              height: 50.w,
-                              padding: EdgeInsets.all(10.w),
-                              decoration: BoxDecoration(
-                                color: Colors.red,
-                                borderRadius: BorderRadius.circular(30.r),
+                          timeWidget(context, index),
+                          SizedBox(height: 10.h),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: [
+                                  Container(
+                                    padding: EdgeInsets.symmetric(horizontal: 5.w, vertical: 10.h),
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(10.r),
+                                      border: Border.all(width: 1, color: Theme.of(context).primaryColor.withOpacity(0.5)),
+                                    ),
+                                    child: Text(
+                                      "Re-Order",
+                                      style: Theme.of(context).textTheme.labelSmall!.copyWith(
+                                          fontWeight: FontWeight.w500,
+                                          color: Theme.of(context).primaryColor.withOpacity(0.5)
+                                      ),
+                                    ),
+                                  )
+                                ],
                               ),
-                              child: const Image(
-                                image: AssetImage("assets/icons/trash.png"),
-                                fit: BoxFit.cover,
-                                color: Colors.white,
-                              ),
-                            ),
+                              Wrap(
+                                  direction: Axis.horizontal,
+                                  children: List.generate(generateList[index], (value){
+                                    var item = controller.state.storageItem.where((p) => p.time==controller.cartOrderTimeToList[index]).toList();
+
+                                    return value<=2?Container(
+                                      margin: EdgeInsets.only(right: 10.w),
+                                      child: Container(
+                                        height: 65.w,
+                                        width: 60.w,
+                                        decoration: BoxDecoration(
+                                            borderRadius: BorderRadius.circular(20.r),
+                                            image: DecorationImage(
+                                                fit: BoxFit.cover,
+                                                image: NetworkImage(
+                                                    BASE_URL+UPLOADS+item[value].product!.img!
+                                                )
+                                            )
+                                        ),
+                                      ),
+                                    ):Container();
+                                  })
+                              )
+                            ],
                           )
                         ],
-                      ),
-                      child: Container(
-                        //height: 120.h,
-                        margin: EdgeInsets.only(bottom: 10.h),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            timeWidget(context, index),
-                            SizedBox(height: 10.h),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  children: [
-                                    Container(
-                                      padding: EdgeInsets.symmetric(horizontal: 5.w, vertical: 10.h),
-                                      decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(10.r),
-                                        border: Border.all(width: 1, color: Theme.of(context).primaryColor.withOpacity(0.5)),
-                                      ),
-                                      child: Text(
-                                        "Re-Order",
-                                        style: Theme.of(context).textTheme.labelSmall!.copyWith(
-                                            fontWeight: FontWeight.w500,
-                                            color: Theme.of(context).primaryColor.withOpacity(0.5)
-                                        ),
-                                      ),
-                                    )
-                                  ],
-                                ),
-                                Wrap(
-                                    direction: Axis.horizontal,
-                                    children: List.generate(generateList[index], (value){
-                                      var item = controller.state.storageItem.where((p) => p.time==controller.cartOrderTimeToList[index]).toList();
-
-                                      return value<=2?Container(
-                                        margin: EdgeInsets.only(right: 10.w),
-                                        child: Container(
-                                          height: 65.w,
-                                          width: 60.w,
-                                          decoration: BoxDecoration(
-                                              borderRadius: BorderRadius.circular(20.r),
-                                              image: DecorationImage(
-                                                  fit: BoxFit.cover,
-                                                  image: NetworkImage(
-                                                      BASE_URL+UPLOADS+item[value].img!
-                                                  )
-                                              )
-                                          ),
-                                        ),
-                                      ):Container();
-                                    })
-                                )
-                              ],
-                            )
-                          ],
-                        ),
                       ),
                     );
                   },

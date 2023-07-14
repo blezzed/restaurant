@@ -68,7 +68,7 @@ class ProductDetailsController extends GetxController{
     state.quantity.value=0;
     state.inCartItems.value=_cart.getQuantity(product);
 
-    update();
+    _cart.getCartData();
   }
 
   int get totalItems{
@@ -87,6 +87,7 @@ class ProductDetailsController extends GetxController{
     page = data["page"];
 
     state.product.value = ProductModel.fromJson(jsonDecode(data["product"]!));
+    state.inCartItems.value=_cart.getQuantity(state.product.value!);
 
   }
 

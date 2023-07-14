@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:restaurant/common/entities/entities.dart';
 import 'package:restaurant/common/store/store.dart';
 import 'package:restaurant/pages/cart/index.dart';
+import 'package:restaurant/pages/cart_history/index.dart';
 import 'package:restaurant/theme.dart';
 
 class CartController extends GetxController{
@@ -16,16 +17,13 @@ class CartController extends GetxController{
   void addItem(context, ProductModel product, int quantity){
     var totalQuantity=0;
     if(state.items.containsKey(product.id!)){
-      state.items.update(product.id!, (value) {
+      state.items.update(product.id!, (val) {
 
-        totalQuantity=value.quantity!+quantity;
+        totalQuantity=val.quantity.value+quantity;
 
         return CartModel(
-          id: value.id,
-          name: value.name,
-          price: value.price,
-          img: value.img,
-          quantity: value.quantity! + quantity,
+          id: val.id,
+          quantity: val.quantity+ quantity,
           isExist: true,
           time: DateTime.now().toString(),
           product: product,
@@ -38,10 +36,7 @@ class CartController extends GetxController{
       if(quantity>0){
         state.items.putIfAbsent(product.id!, () => CartModel(
           id: product.id,
-          name: product.name,
-          price: product.price,
-          img: product.img,
-          quantity: quantity,
+          quantity: quantity.obs,
           isExist: true,
           time: DateTime.now().toString(),
           product: product,
@@ -54,6 +49,7 @@ class CartController extends GetxController{
       }
     }
     UserStore.to.saveToCartList(getItems);
+    getCartData();
   }
 
   bool existInCart(ProductModel product){
@@ -68,7 +64,7 @@ class CartController extends GetxController{
     if(state.items.containsKey(product.id)){
       state.items.forEach((key, value) {
         if(key==product.id){
-          quantity = value.quantity!;
+          quantity = value.quantity.value;
         }
       });
     }
@@ -78,7 +74,7 @@ class CartController extends GetxController{
   int get totalItems{
     var totalQuantity=0;
     state.items.forEach((key, value){
-      totalQuantity += value.quantity!;
+      totalQuantity += value.quantity.value;
     });
     return totalQuantity;
   }
@@ -92,12 +88,17 @@ class CartController extends GetxController{
   int get totalAmount{
     var total=0;
 
-    state.items.forEach((key, value) { total += value.quantity!* value.price!;});
+    state.items.forEach((key, value) { total += value.quantity.value * value.product!.price!;});
     return total;
   }
 
   List<CartModel> getCartData(){
     setCart = UserStore.to.getCartList();
+
+    state.getItems.value = state.items.values.map((e) {
+      return e;
+    }).toList();
+
     return state.storageItem;
   }
 
@@ -110,12 +111,13 @@ class CartController extends GetxController{
   }
 
   void addToHistory(){
-    //UserStore.to.saveToCartHistory();
+    UserStore.to.saveToCartHistory(state.getItems);
     clear();
   }
 
   void clear(){
     state.items.value={};
+    removeCartSharedPreferences();
     update();
   }
 
@@ -134,19 +136,19 @@ class CartController extends GetxController{
   }
 
   void removeCartSharedPreferences() {
-    UserStore.to.removeCartSharedPreferences();
+    UserStore.to.removeCart();
   }
 
   @override
   void onInit(){
     super.onInit();
     var data = Get.arguments;
-
+    //removeCartSharedPreferences();
     getCartData();
 
-    state.getItems.value = state.items.values.map((e) {
+    /*state.getItems.value = state.items.values.map((e) {
       return e;
-    }).toList();
+    }).toList();*/
 
     /*for(int i=0; i<state.storageItem.length; i++){
       if(state.cartItemsPerOrder.containsKey(company_name)){

@@ -1,4 +1,6 @@
 
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+
 const String STORAGE_USER_PROFILE_KEY = "user_profile";
 
 const String STORAGE_COMPANY_PROFILE_KEY = "company_profile";
@@ -23,3 +25,7 @@ const String BASE_URL = "http://mvs.bslmeiyu.com";
 const String FOOD_PRODUCT_URL = "/api/v1/products/popular";
 const String RECOMMENDED_PRODUCT_URL = "/api/v1/products/recommended";
 const String UPLOADS = "/uploads/";
+
+String baseUrl = dotenv.get('SERVER_HOST', fallback: 'http://10.0.2.2:8080');
+const String LOGGED_IN_USER = "auth/login";
+const String SIGN_IN_USER = "auth/signup";

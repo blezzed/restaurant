@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:restaurant/common/apis/apis.dart';
@@ -7,6 +8,7 @@ import 'package:restaurant/global.dart';
 import 'package:restaurant/theme.dart';
 
 Future<void> main() async {
+  dotenv.load(fileName: ".env");
   await Global.init();
   runApp(MyApp(
       appTheme: AppTheme()

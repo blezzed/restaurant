@@ -23,4 +23,6 @@ class AppRoutes{
   static const String MenuList = "/menu_list";
 
   static const String ReserveTable = "/reserve_table";
+
+  static const String Receipts = "/receipts";
 }

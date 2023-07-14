@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intl/intl.dart';
+import 'package:restaurant/common/widget/custom_snack_bar.dart';
 import 'package:restaurant/pages/home/reserve_table/index.dart';
 
 class ReserveTablePage extends GetView<ReserveTableController> {
@@ -65,9 +66,24 @@ class ReserveTablePage extends GetView<ReserveTableController> {
                             onTap: (){
                               details.onStepContinue;
                               if (controller.state.currentStep.value < 2) {
-                                controller.state.currentStep.value += 1;
+                                if(controller.state.currentStep == 0 && controller.state.selected_date.value == "Select date of the meal"){
+                                  showCustomSnackBar("Please select the date of the meal", title: "Date error");
+                                }else if(controller.state.currentStep == 1 && controller.state.selected_time.value == "Select time of the meal"){
+                                  showCustomSnackBar("Please select the time of the meal", title: "Time error");
+                                }else{
+                                  controller.state.currentStep.value += 1;
+                                }
                               }else{
-                                Get.toNamed("/menu_list");
+                                if(controller.state.menuCheckbox.isTrue){
+                                  Get.toNamed("/menu_list");
+                                }else{
+                                  Get.offAllNamed("/home");
+                                  showCustomSnackBar(
+                                      "Dear customer, your reservation has been successfully confirmed. Check your inbox for the confirmation email.",
+                                      title: "Reservation Confirmation",
+                                      isError: false
+                                  );
+                                }
                               }
                             },
                             child: Container(
